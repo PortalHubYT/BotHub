@@ -17,10 +17,13 @@ GUILD = os.getenv('DISCORD_GUILD_NAME')
 bot = commands.Bot(command_prefix='!')
 initial_extensions = ['cogs.curation']
 
+# Honestly idk the discord module is doing something here it's not a big deal
 if __name__ == '__main__':
     for extension in initial_extensions:
         bot.load_extension(extension)
-     
+
+# The following decorator (@bot.event) is ran when the bot is booted, and the decorated function is just printing some informations
+# at runtime
 @bot.event
 async def on_ready():
     guild = discord.utils.get(bot.guilds, name=GUILD)
